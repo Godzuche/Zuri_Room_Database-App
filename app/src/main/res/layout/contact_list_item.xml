@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="4dp"
+    android:backgroundTint="@color/grey">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        android:layout_margin="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/nameTv"
+                style="?textAppearanceBody1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:drawableStart="@drawable/ic_outline_person_outline_24"
+                android:drawablePadding="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                app:drawableTint="@color/my_blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Contact name" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/numberTv"
+                style="?textAppearanceBody2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_outline_call_24"
+                android:drawablePadding="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                app:drawableTint="@color/teal_200"
+                app:layout_constraintStart_toStartOf="@id/nameTv"
+                app:layout_constraintTop_toBottomOf="@id/nameTv"
+                tools:text="08059062965" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>
