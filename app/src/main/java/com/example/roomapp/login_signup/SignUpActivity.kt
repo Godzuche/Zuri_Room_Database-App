@@ -7,14 +7,14 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.roomapp.R
-import com.example.roomapp.db.NoteRepository
-import com.example.roomapp.db.entities.NoteEntity
+import com.example.roomapp.db.UserRepository
+import com.example.roomapp.db.entities.UserEntity
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var signUpButton: Button
-    private lateinit var noteRepository: NoteRepository
+    private lateinit var userRepository: UserRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,19 +28,19 @@ class SignUpActivity : AppCompatActivity() {
         emailEditText = findViewById(R.id.email_edit_text)
         signUpButton = findViewById(R.id.sign_up_button)
         passwordEditText = findViewById(R.id.password_edit_text)
-        noteRepository = NoteRepository(this)
+        userRepository = UserRepository(this)
 
         signUpButton.setOnClickListener {
-            saveNote()
+            saveUser()
         }
     }
 
-    private fun saveNote() {
+    private fun saveUser() {
         if (emailEditText.text.isNullOrBlank() || passwordEditText.text.isNullOrBlank()) {
             Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
         }else {
-            val note = NoteEntity(email = emailEditText.text.toString(), password = passwordEditText.text.toString())
-            noteRepository.insertNote(note)
+            val user = UserEntity(email = emailEditText.text.toString(), password = passwordEditText.text.toString())
+            userRepository.insertUser(user)
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }

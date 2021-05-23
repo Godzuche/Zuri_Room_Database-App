@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.roomapp.contact.ContactCategoryActivity
 import com.example.roomapp.databinding.ActivityLoginBinding
-import com.example.roomapp.db.NoteRepository
-import com.example.roomapp.db.entities.NoteEntity
+import com.example.roomapp.db.UserRepository
+import com.example.roomapp.db.entities.UserEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var noteRepository: NoteRepository
+    private lateinit var userRepository: UserRepository
 //    private lateinit val foundNoteEntity: NoteEntity
 //    private lateinit var result: String
 
@@ -30,16 +30,16 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        noteRepository = NoteRepository(this)
+        userRepository = UserRepository(this)
 
 
         binding.loginButton.setOnClickListener {
             val email = binding.emailEditTextLogin.text
             val password = binding.passwordEditTextLogin.text
-            val enteredCredentials = NoteEntity(email.toString(), password.toString())
+            val enteredCredentials = UserEntity(email.toString(), password.toString())
 
             GlobalScope.launch(Dispatchers.Main) {
-                val foundNoteEntity = noteRepository.findCredentials(email.toString(), password.toString())
+                val foundUserEntity = userRepository.findCredentials(email.toString(), password.toString())
                 //used this commented lines to verify the type of data found in the database
 //                this@LoginActivity.result = foundNoteEntity.toString()
 //                Toast.makeText(this@LoginActivity, result, Toast.LENGTH_SHORT).show()
@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
                 if(email.isNullOrEmpty() || password.isNullOrEmpty()) {
                     Toast.makeText(this@LoginActivity, "Enter your login credentials", Toast.LENGTH_SHORT).show()
                 } else {
-                    if (foundNoteEntity == enteredCredentials ){
+                    if (foundUserEntity == enteredCredentials ){
                         val intent = Intent(this@LoginActivity, ContactCategoryActivity::class.java)
                         startActivity(intent)
                     } else {

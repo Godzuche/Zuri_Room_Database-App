@@ -4,8 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "note")
-data class NoteEntity(
+@Entity(tableName = "user")
+data class UserEntity(
 //    @PrimaryKey(autoGenerate = true)
 //    val id: Int = 0,
     @PrimaryKey(autoGenerate = false)

@@ -5,21 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomapp.R
-import com.example.roomapp.adapter.NoteAdapter
-import com.example.roomapp.db.NoteRepository
+//import com.example.roomapp.db.UserRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var noteAdapter: NoteAdapter
+//    private lateinit var noteAdapter: UserAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var recyclerView: RecyclerView
     private lateinit var addNoteBtn: FloatingActionButton
-    private lateinit var noteRepository: NoteRepository
+//    private lateinit var userRepository: UserRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//
+
 //        init()
 //    }
 //

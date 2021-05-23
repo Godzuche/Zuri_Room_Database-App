@@ -2,21 +2,21 @@ package com.example.roomapp.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.roomapp.db.entities.NoteEntity
+import com.example.roomapp.db.entities.UserEntity
 
 @Dao
-interface NoteDao {
-    @Query("SELECT * FROM note")
-    fun selectAllNote(): LiveData<List<NoteEntity>>
+interface UserDao {
+    @Query("SELECT * FROM user")
+    fun selectAllUser(): LiveData<List<UserEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNote(NoteEntity: NoteEntity)
+    fun insertUser(UserEntity: UserEntity)
 
     @Delete
-    fun deleteNote(NoteEntity: NoteEntity)
+    fun deleteUser(UserEntity: UserEntity)
 
     @Update
-    fun updateNote(NoteEntity: NoteEntity)
+    fun updateUser(UserEntity: UserEntity)
 
 //    @Query("SELECT * from note WHERE id = :key")
 //    fun findUserById(key: Int): NoteEntity?
@@ -30,7 +30,7 @@ interface NoteDao {
 //    @Query("SELECT * FROM note ORDER BY id DESC")
 //    fun getAllNote(): LiveData<List<NoteEntity>>
 
-    @Query("SELECT * FROM note WHERE email = :e_mail AND password = :pass_word")
-    suspend fun findCredentials(e_mail: String, pass_word: String): NoteEntity
+    @Query("SELECT * FROM user WHERE email = :e_mail AND password = :pass_word")
+    suspend fun findCredentials(e_mail: String, pass_word: String): UserEntity
 
 }
